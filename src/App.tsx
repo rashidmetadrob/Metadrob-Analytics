@@ -24,7 +24,7 @@ function App() {
       </div>
       <div className="w-full flex justify-center p- sm:px-6 md:px-8 lg:px-16">
         <div className="w-full max-w-screen-lg">
-          <AnalyticsEngagement />
+          {/* <AnalyticsEngagement /> */}
         </div>
       </div>
     </div>

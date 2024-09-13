@@ -9,7 +9,7 @@ import { MdArrowOutward } from "react-icons/md";
 Sankey(Highcharts);
 
 const AnalyticsEngagement = () => {
-  const [state, setState] = useState({
+  const data={
     // Area chart data and options
     seriesArea: [
       {
@@ -81,7 +81,7 @@ const AnalyticsEngagement = () => {
         },
       ],
     },
-  });
+  };
 
   return (
     <div className="flex flex-col w-full max-w-screen-xl mx-auto px-8 lg:px-8 py-0">
@@ -98,7 +98,7 @@ const AnalyticsEngagement = () => {
           <div className="flex-1 overflow-hidden max-h-96 text-black">
             <HighchartsReact
               highcharts={Highcharts}
-              options={state.sankeyOptions}
+              options={data.sankeyOptions}
             />
           </div>
         </div>
