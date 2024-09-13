@@ -4,6 +4,7 @@ import {
   getClicksAnalyticsApi,
   getMostClickedComponentsApi,
   getTemplateAnalyticsApi,
+  getTemplateCountsApi
 } from "../Endpoints/commonEndpoints";
 
 import axios from "axios";
@@ -54,3 +55,14 @@ const getTemplatesAnalyticsFunction = async () => {
 
 
 
+export const getTemplateCounts=async ()=>{
+    try {
+        
+        const response = await axios.get(
+            `${AnalyticsEndPoint}${getTemplateCountsApi}`
+          );
+          return response.data;
+    } catch (error) {
+        return error
+    }
+}

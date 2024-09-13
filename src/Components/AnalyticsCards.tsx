@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getClicksAnalyticsFunction, getMostClickedComponentFunction, getUserAnalyticsFunction } from "../Utils/Api/Methords/getMethord"
+import { getClicksAnalyticsFunction, getMostClickedComponentFunction, getTemplateCounts, getUserAnalyticsFunction } from "../Utils/Api/Methords/getMethord"
 
 
 const AnalyticsCards = () =>{
@@ -8,6 +8,7 @@ const [totalUsers,setTotalUsers]=useState(0)
 const [returningUsers,setReturningUsers]=useState(0)
 const [totalClicks,setTotalClicks]=useState(0)
 const [clickPerSession,setClickPerSession]=useState(0)
+const [templateCounts,setTemplateCounts]=useState(0)
 const [mostClickedComponent,setMostClickedComponent]=useState({
   componentName:"",
   count:0
@@ -48,6 +49,13 @@ const getMostClikedComponent= async()=>{
 
 }
 
+const getTemplateCount=async ()=>{
+  const response= await getTemplateCounts()
+  if(response.status){
+    setTemplateCounts(response.data)
+  }
+}
+
 useEffect(()=>{
 //total users
 //returing users
@@ -60,7 +68,8 @@ clicksAnalitics()
 //most clicked compoinets with count
 getMostClikedComponent()
 
-
+//get Templte Counts
+getTemplateCount()
 },[])
 
 
@@ -147,14 +156,14 @@ getMostClikedComponent()
   <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
 
     <div className="flex justify-between items-center">
-      <h2 className="text-sm font-medium font-serif">Total User</h2>
+      <h2 className="text-sm font-medium font-serif">Total Templates</h2>
     </div>
     
 
     <div className="flex justify-between items-center">
 
       <div>
-        <p className="text-4xl font-medium font-serif">264K</p>
+        <p className="text-4xl font-medium font-serif">{templateCounts}</p>
         <div className="flex items-center mt-1">
           <span className="text-green-500 font-serif">▲ 3.48%</span>
         </div>
