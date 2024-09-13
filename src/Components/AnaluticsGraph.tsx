@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import ModalComponent from "./ModalComponent";
@@ -185,6 +184,56 @@ const AnalyticsGraph = () => {
         }
       })();
   }, []);
+  // donut chart
+  const donutChartOptions = {
+    series: [44, 55, 41, 17, 15],
+    options: {
+      chart: {
+        type: 'donut',
+        width: 380,
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: 'bottom',
+          },
+        },
+      }],
+      legend: {
+        position: 'right',
+        offsetY: 0,
+      },
+      colors: ['#0C8CE9', '#FF4560', '#00E396', '#FEB019', '#775DD0'],
+    },
+  };
+
+ // State for pie chart
+ const pieChartOptions = {
+  series: [44, 55, 13, 43, 22],
+  options: {
+    chart: {
+      width: 380,
+      type: 'pie',
+    },
+    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        chart: {
+          width: 200,
+        },
+        legend: {
+          position: 'bottom',
+        },
+      },
+    }],
+  },
+};
+
 
   return (
     <>
@@ -244,10 +293,10 @@ const AnalyticsGraph = () => {
               </div>
             </div>
             <div className="flex-1 overflow- max-h-72">
-              <ReactApexChart
-                options={state?.options}
-                series={state?.series}
-                type="area"
+            <ReactApexChart
+                options={donutChartOptions.options}
+                series={donutChartOptions.series}
+                type="donut"
                 height={280}
               />
             </div>
@@ -258,16 +307,17 @@ const AnalyticsGraph = () => {
               <h2 className="text-xs font-medium font-serif">
                 Clicked Per Session
               </h2>
+              <h2 className="text-xs font-medium font-serif">Clicks by Device Category</h2>
               <div className="text-xs font-medium font-serif cursor-pointer">
                 <MdArrowOutward />
               </div>
             </div>
-            <div className="flex-1 overflow- max-h-64">
-              <ReactApexChart
-                options={state?.options}
-                series={state?.series}
-                type="area"
-                height={280}
+            <div className="flex-1 overflow- max-h-64 text-black">
+            <ReactApexChart
+                options={pieChartOptions.options}
+                series={pieChartOptions.series}
+                type="pie"
+                width={380}
               />
             </div>
           </div>
@@ -278,4 +328,3 @@ const AnalyticsGraph = () => {
 };
 
 export default AnalyticsGraph;
-
