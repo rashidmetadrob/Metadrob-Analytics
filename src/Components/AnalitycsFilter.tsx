@@ -1,7 +1,7 @@
 const AnalyticsFilter=()=>{
     return (
         <>
-<div className="flex  h-10 w-full  justify-between pl-10 pr-10 ">
+<div className="flex  h-14 w-full  justify-between pl-10 pr-10 ">
 <div className="flex  text-white font-bold justify-center items-center text-xl">Analytics Dashboard</div>
 <div className="flex  ">
 <div className="flex items-center">

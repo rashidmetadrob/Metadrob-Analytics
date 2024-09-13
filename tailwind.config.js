@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      poppins: ['Poppins', 'sans'],
+      roboto: ['Roboto', 'sans'],
+      sans: ["Open Sans"],
+    },
   },
   plugins: [],
 }
