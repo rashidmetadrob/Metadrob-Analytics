@@ -29,7 +29,7 @@ const AnalyticsTable = () => {
         <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
           <div className="flex justify-between items-center">
             <h2 className="text-sm font-medium font-serif">Component Metrics</h2>
-            <h2 className="text-sm font-medium font-serif">Icon</h2>
+            {/* <h2 className="text-sm font-medium font-serif">Icon</h2> */}
           </div>
           <div className="flex-1 overflow-auto max-h-64">
             <table className="min-w-full table-auto bg-gray-900 rounded-lg">

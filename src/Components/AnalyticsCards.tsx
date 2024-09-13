@@ -30,14 +30,16 @@ const AnalyticsCards = () =>{
     }
   }  
 
-  const clicksAnalitics= async ()=>{
-    const response= await getClicksAnalyticsFunction()
-    if(response.status){
   
-      setTotalClicks(response.data.totalClicks)
-  
-    }
+const clicksAnalitics= async ()=>{
+  const response= await getClicksAnalyticsFunction()
+  if(response.status){
+
+    setTotalClicks(response.data.totalClicks)
+
   }
+}
+
 
   const getMostClikedComponent= async()=>{
     const response= await getMostClickedComponentFunction()
@@ -120,7 +122,7 @@ const AnalyticsCards = () =>{
       
  
       <div>
-        <svg className="w-20 h-12 sm:w-24 sm:h-16" fill="none" stroke="blue" stroke-width="2" viewBox="0 0 24 24">
+        <svg className="w-20 h-12 sm:w-24 sm:h-16" fill="none" stroke="" stroke-width="2" viewBox="0 0 24 24">
           <path d="M2 12c2 1 4 4 6 4s4-3 6-4 4 1 6 4"></path>
         </svg>
       </div>

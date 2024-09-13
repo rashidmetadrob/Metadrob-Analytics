@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="w-screen h-auto bg-[#101010]">
       <div className="flex flex-col items-center p-2 sm:p-2 md:p-2 lg:p-2 ">
-        <div className="w-full max-w-screen-lg px-4 sm:px-6 md:px-8 lg:px-10">
+        <div className="w-full max-w-screen-lg px-4 sm:px-6 md:px-8 lg:px-10 ">
           <AnalyticsFilter />
           <AnalyticsCards />
         </div>
