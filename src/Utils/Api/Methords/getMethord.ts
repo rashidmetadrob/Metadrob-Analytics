@@ -10,7 +10,7 @@ import axios from "axios";
 
 export const getUserAnalyticsFunction = async () => {
   try {
-    const response = await axios.get(
+    const response = await axios.create({withCredentials:true}).get(
       `${AnalyticsEndPoint}${getUserAnalyticsApi}`
     );
     return response.data;
@@ -30,7 +30,7 @@ export const getClicksAnalyticsFunction = async () => {
   }
 };
 
-const getMostClickedComponentFunction = async () => {
+export const getMostClickedComponentFunction = async () => {
   try {
     const response = await axios.get(
       `${AnalyticsEndPoint}${getMostClickedComponentsApi}`
@@ -51,5 +51,6 @@ const getTemplatesAnalyticsFunction = async () => {
     return error;
   }
 };
+
 
 
