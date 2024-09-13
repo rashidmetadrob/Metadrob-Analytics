@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import ModalComponent from "./ModalComponent";
@@ -277,3 +278,4 @@ const AnalyticsGraph = () => {
 };
 
 export default AnalyticsGraph;
+
