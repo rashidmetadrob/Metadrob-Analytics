@@ -13,3 +13,5 @@ export const getTemplateAnalyticsApi = "/getTemplateAnalytics";
 export const getTemplateCountsApi='/getTemplateCount'
 
 export const getComponentNamesAndClickCountApi='/getComponentNameAndCount'
+
+export const getDeviceCategoryApi='/getDeviceCategory'

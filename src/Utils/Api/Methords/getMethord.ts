@@ -5,7 +5,8 @@ import {
   getMostClickedComponentsApi,
   getTemplateAnalyticsApi,
   getTemplateCountsApi,
-  getComponentNamesAndClickCountApi
+  getComponentNamesAndClickCountApi,
+  getDeviceCategoryApi
 } from "../Endpoints/commonEndpoints";
 
 import axios from "axios";
@@ -77,6 +78,18 @@ export const getComponentNameAndClickCountFunction =async ()=>{
         
         const response = await axios.get(
             `${AnalyticsEndPoint}${getComponentNamesAndClickCountApi}`
+          );
+          return response.data;
+    } catch (error) {
+        return error
+    }
+}
+
+
+export const getDeviceCategoryFunction=async ()=>{
+    try {
+        const response = await axios.get(
+            `${AnalyticsEndPoint}${getDeviceCategoryApi}`
           );
           return response.data;
     } catch (error) {

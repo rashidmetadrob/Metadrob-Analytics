@@ -3,6 +3,8 @@ import ReactApexChart from "react-apexcharts";
 import ModalComponent from "./ModalComponent";
 import { MdArrowOutward } from "react-icons/md";
 import {
+  getComponentNameAndClickCountFunction,
+  getDeviceCategoryFunction,
   getTemplatesAnalyticsFunction,
   getUserAnalyticsFunction,
 } from "../Utils/Api/Methords/getMethord";
@@ -12,51 +14,8 @@ const AnalyticsGraph = () => {
   const [totalUsers, setTotalUsers] = useState(0);
   const [returningUsers, setReturningUsers] = useState(0);
   const [top5TemplateData, setTop5TemplateData]: any = useState([]);
-
-  const [state, setState] = useState({
-    series: [
-      {
-        name: "Completed",
-        data: [31, 40, 28, 51, 42, 109, 100],
-      },
-      {
-        name: "Not Completed",
-        data: [11, 32, 45, 32, 34, 52, 41],
-      },
-    ],
-    options: {
-      chart: {
-        height: 350,
-        type: "area",
-        toolbar: {
-          show: false,
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: "smooth",
-        width: 2,
-      },
-      xaxis: {
-        type: "Day",
-        categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        axisBorder: {
-          show: false,
-        },
-        axisTicks: {
-          show: false,
-        },
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm",
-        },
-      },
-      colors: ["#0C8CE9", "#7861d7"],
-    },
-  });
+  const [top5CoponentData, setTop5CoponentData]: any = useState([]);
+  const [deviceCatogary, setDeviceCatogary]: any = useState([]);
 
   // Bar chart for Total Users and Returning Users
   const barChartOptions = {
@@ -156,6 +115,7 @@ const AnalyticsGraph = () => {
         categories: top5TemplateData.categories || [],
       },
     },
+    labels: top5TemplateData.categories,
   };
 
   //
@@ -182,58 +142,99 @@ const AnalyticsGraph = () => {
             series: templateCounts,
           });
         }
+      })(),
+      (async () => {
+        const response = await getComponentNameAndClickCountFunction();
+        if (response.status) {
+          const sortedData = response.data
+            .sort((a: any, b: any) => b.click_count - a.click_count)
+            .slice(0, 5);
+          const componentNames = sortedData.map(
+            (item: any) => item.component_name
+          );
+          const componentClickCounts = sortedData.map(
+            (item: any) => item.click_count
+          );
+          console.log(
+            componentClickCounts,
+            "componentClickCounts",
+            componentNames,
+            "componentNames"
+          );
+
+          setTop5CoponentData({
+            series: componentClickCounts,
+            data: componentNames,
+          });
+        }
+      })(),
+      (async () => {
+        const response = await getDeviceCategoryFunction();
+        if (response.data) {
+          const deviceNames = response.data.map((item: any) => item._id); // Labels (e.g., 'Desktop', 'Mobile')
+          const deviceCounts = response.data.map((item: any) => item.count);
+
+          setDeviceCatogary({
+            series: deviceCounts,
+            labels: deviceNames,
+          });
+        }
       })();
   }, []);
   // donut chart
   const donutChartOptions = {
-    series: [44, 55, 41, 17, 15],
+    series: top5CoponentData.series || [],
     options: {
       chart: {
-        type: 'donut',
+        type: "donut",
         width: 380,
       },
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200,
-          },
-          legend: {
-            position: 'bottom',
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+            },
+            legend: {
+              position: "bottom",
+            },
           },
         },
-      }],
+      ],
       legend: {
-        position: 'right',
+        position: "right",
         offsetY: 0,
       },
-      colors: ['#0C8CE9', '#FF4560', '#00E396', '#FEB019', '#775DD0'],
+      colors: ["#0C8CE9", "#FF4560", "#00E396", "#FEB019", "#775DD0"],
+      labels: top5CoponentData.data,
     },
   };
 
- // State for pie chart
- const pieChartOptions = {
-  series: [44, 55, 13, 43, 22],
-  options: {
-    chart: {
-      width: 380,
-      type: 'pie',
-    },
-    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-    responsive: [{
-      breakpoint: 480,
-      options: {
-        chart: {
-          width: 200,
-        },
-        legend: {
-          position: 'bottom',
-        },
+  // State for pie chart
+  const pieChartOptions = {
+    series: deviceCatogary.series || [],
+    options: {
+      chart: {
+        width: 380,
+        type: "pie",
       },
-    }],
-  },
-};
-
+      labels: deviceCatogary.labels || [],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+            },
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      ],
+    },
+  };
 
   return (
     <>
@@ -293,7 +294,7 @@ const AnalyticsGraph = () => {
               </div>
             </div>
             <div className="flex-1 overflow- max-h-72">
-            <ReactApexChart
+              <ReactApexChart
                 options={donutChartOptions.options}
                 series={donutChartOptions.series}
                 type="donut"
@@ -304,14 +305,15 @@ const AnalyticsGraph = () => {
 
           <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
             <div className="flex justify-between items-center">
-      
-              <h2 className="text-xs font-medium font-serif">Clicks by Device Category</h2>
+              <h2 className="text-xs font-medium font-serif">
+                Clicks by Device Category
+              </h2>
               <div className="text-xs font-medium font-serif cursor-pointer">
                 <MdArrowOutward />
               </div>
             </div>
             <div className="flex-1 overflow- max-h-64 text-black">
-            <ReactApexChart
+              <ReactApexChart
                 options={pieChartOptions.options}
                 series={pieChartOptions.series}
                 type="pie"
