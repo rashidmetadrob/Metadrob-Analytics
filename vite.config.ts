@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     https: {
-      key: fs.readFileSync('C:/Users/DELL/Desktop/restructure/Metadrob-Resturcture/Cert/key.pem'),
-      cert: fs.readFileSync('C:/Users/DELL/Desktop/restructure/Metadrob-Resturcture/Cert/cert.pem')
+      key: fs.readFileSync('C:/Users/DELL/Desktop/Metadrob-Restructure/Metadrob-Resturcture/Cert/key.pem'),
+      cert: fs.readFileSync('C:/Users/DELL/Desktop/Metadrob-Restructure/Metadrob-Resturcture/Cert/cert.pem')
     },
     host: 'localhost',
     port: 4000 
