@@ -9,3 +9,7 @@ export const getClicksAnalyticsApi = "/getClickAnalytics";
 export const getMostClickedComponentsApi = "/getMostClickedComponent";
 
 export const getTemplateAnalyticsApi = "/getTemplateAnalytics";
+
+export const getTemplateCountsApi='/getTemplateCount'
+
+export const getComponentNamesAndClickCountApi='/getComponentNameAndCount'
