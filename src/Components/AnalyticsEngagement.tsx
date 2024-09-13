@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactApexChart from 'react-apexcharts'
+import { MdArrowOutward } from "react-icons/md";
 const AnalyticsEngagement = () => {
   const [state, setState] = useState({
     series: [
@@ -51,7 +52,9 @@ const AnalyticsEngagement = () => {
         <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
           <div className="flex justify-between items-center">
             <h2 className="text-xs font-medium font-serif">Engagement</h2>
-            <h2 className="text-xs font-medium font-serif">Icon</h2>
+            <div className="text-xs font-medium font-serif cursor-pointer">
+            <MdArrowOutward />
+            </div>
           </div>
         <div className="flex-1 overflow- max-h-96 text-black">
         <ReactApexChart options={state?.options} series={state?.series} type="area" height={280} />
