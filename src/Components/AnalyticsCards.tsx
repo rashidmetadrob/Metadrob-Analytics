@@ -48,20 +48,20 @@ const getMostClikedComponent= async()=>{
 
 }
 
-useEffect(()=>{
-//total users
-//returing users
-getUserAnalytics()
+// useEffect(()=>{
+// //total users
+// //returing users
+// getUserAnalytics()
 
-//total clicks
-//click per session 
-clicksAnalitics()
+// //total clicks
+// //click per session 
+// clicksAnalitics()
 
-//most clicked compoinets with count
-getMostClikedComponent()
+// //most clicked compoinets with count
+// getMostClikedComponent()
 
 
-},[])
+// },[])
 
 
 
@@ -73,16 +73,40 @@ getMostClikedComponent()
   <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
 
     <div className="flex justify-between items-center">
-      <h2 className="text-sm font-medium font-serif">Total Users</h2>
+      <h2 className="text-xs font-roboto">Total User</h2>
     </div>
     
 
     <div className="flex justify-between items-center">
 
       <div>
-        <p className="text-4xl font-medium font-serif">{totalUsers}</p>
+        <p className="text-2xl font-serif">264K</p>
         <div className="flex items-center mt-1">
-          <span className="text-green-500 font-serif">▲ 3.48%</span>
+          <span className="text-green-500 font-roboto text-xs">▲ 3.48%</span>
+        </div>
+      </div>
+      
+ 
+      <div>
+        <svg className="w-20 h-12 sm:w-24 sm:h-16" fill="none" stroke="blue" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M2 12c2 1 4 4 6 4s4-3 6-4 4 1 6 4"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
+
+    <div className="flex justify-between items-center">
+      <h2 className="text-xs font-roboto">Total User</h2>
+    </div>
+    
+
+    <div className="flex justify-between items-center">
+
+      <div>
+        <p className="text-2xl font-serif">264K</p>
+        <div className="flex items-center mt-1">
+          <span className="text-green-500 font-roboto text-xs">▲ 3.48%</span>
         </div>
       </div>
       
@@ -98,39 +122,15 @@ getMostClikedComponent()
   <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
 
     <div className="flex justify-between items-center">
-      <h2 className="text-sm font-medium font-serif">Returning Users</h2>
-    </div>
-
-    <div className="flex justify-between items-center">
-
-      <div>
-        <p className="text-4xl font-medium font-serif">{returningUsers}</p>
-        <div className="flex items-center mt-1">
-          <span className="text-green-500 font-serif">▲ 3.48%</span>
-        </div>
-      </div>
-      
-  
-      <div>
-        <svg className="w-20 h-12 sm:w-24 sm:h-16" fill="none" stroke="blue" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M2 12c2 1 4 4 6 4s4-3 6-4 4 1 6 4"></path>
-        </svg>
-      </div>
-    </div>
-  </div>
-
-  <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
-
-    <div className="flex justify-between items-center">
-      <h2 className="text-sm font-medium font-serif">Total Clicks</h2>
+      <h2 className="text-xs font-roboto">Total User</h2>
     </div>
 
     <div className="flex justify-between items-center">
   
       <div>
-        <p className="text-4xl font-medium font-serif">{totalClicks}</p>
+        <p className="text-2xl font-medium font-serif">264K</p>
         <div className="flex items-center mt-1">
-          <span className="text-green-500 font-serif">▲ 3.48%</span>
+          <span className="text-green-500 font-roboto text-xs">▲ 3.48%</span>
         </div>
       </div>
       
@@ -146,53 +146,53 @@ getMostClikedComponent()
 
   <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
 
-    <div className="flex justify-between items-center">
-      <h2 className="text-sm font-medium font-serif">Total User</h2>
-    </div>
-    
+<div className="flex justify-between items-center">
+  <h2 className="text-xs font-roboto">Total User</h2>
+</div>
 
-    <div className="flex justify-between items-center">
 
-      <div>
-        <p className="text-4xl font-medium font-serif">264K</p>
-        <div className="flex items-center mt-1">
-          <span className="text-green-500 font-serif">▲ 3.48%</span>
-        </div>
-      </div>
-      
-  
-      <div>
-        <svg className="w-20 h-12 sm:w-24 sm:h-16" fill="none" stroke="blue" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M2 12c2 1 4 4 6 4s4-3 6-4 4 1 6 4"></path>
-        </svg>
-      </div>
+<div className="flex justify-between items-center">
+
+  <div>
+    <p className="text-2xl font-serif">264K</p>
+    <div className="flex items-center mt-1">
+      <span className="text-green-500 font-roboto text-xs">▲ 3.48%</span>
     </div>
   </div>
-
-  <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
-
-    <div className="flex justify-between items-center">
-      <h2 className="text-sm font-medium font-serif">Most Cliked Component</h2>
-    </div>
-    
-
-    <div className="flex justify-between items-center">
   
-      <div>
-        <p className="text-4xl font-medium font-serif">{mostClickedComponent.componentName}</p>
-        <div className="flex items-center mt-1">
-          <span className=" font-serif">Count: {mostClickedComponent.count}</span>
-        </div>
-      </div>
-      
 
-      <div>
-        <svg className="w-20 h-12 sm:w-24 sm:h-16" fill="none" stroke="blue" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M2 12c2 1 4 4 6 4s4-3 6-4 4 1 6 4"></path>
-        </svg>
-      </div>
+  <div>
+    <svg className="w-20 h-12 sm:w-24 sm:h-16" fill="none" stroke="blue" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M2 12c2 1 4 4 6 4s4-3 6-4 4 1 6 4"></path>
+    </svg>
+  </div>
+</div>
+</div>
+
+<div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
+
+<div className="flex justify-between items-center">
+  <h2 className="text-xs font-roboto">Total User</h2>
+</div>
+
+
+<div className="flex justify-between items-center">
+
+  <div>
+    <p className="text-2xl font-serif">264K</p>
+    <div className="flex items-center mt-1">
+      <span className="text-green-500 font-roboto text-xs">▲ 3.48%</span>
     </div>
   </div>
+  
+
+  <div>
+    <svg className="w-20 h-12 sm:w-24 sm:h-16" fill="none" stroke="blue" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M2 12c2 1 4 4 6 4s4-3 6-4 4 1 6 4"></path>
+    </svg>
+  </div>
+</div>
+</div>
 </div>
 
     </>
