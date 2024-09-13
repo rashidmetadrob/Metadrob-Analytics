@@ -8,7 +8,7 @@ import {
 } from "../Utils/Api/Methords/getMethord";
 
 const AnalyticsGraph = () => {
-  const [analyticsData, setAnalyticsData] = useState(true);
+  const [analyticsData, setAnalyticsData] = useState(false);
   const [totalUsers, setTotalUsers] = useState(0);
   const [returningUsers, setReturningUsers] = useState(0);
   const [top5TemplateData, setTop5TemplateData]: any = useState([]);
@@ -304,9 +304,7 @@ const AnalyticsGraph = () => {
 
           <div className="bg-black rounded-lg p-4 shadow-lg text-white flex flex-col space-y-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-xs font-medium font-serif">
-                Clicked Per Session
-              </h2>
+      
               <h2 className="text-xs font-medium font-serif">Clicks by Device Category</h2>
               <div className="text-xs font-medium font-serif cursor-pointer">
                 <MdArrowOutward />
