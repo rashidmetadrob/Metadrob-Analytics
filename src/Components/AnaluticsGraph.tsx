@@ -8,6 +8,7 @@ import {
   getTemplatesAnalyticsFunction,
   getUserAnalyticsFunction,
 } from "../Utils/Api/Methords/getMethord";
+import { ApexOptions } from "apexcharts";
 
 const AnalyticsGraph = () => {
   const [analyticsData, setAnalyticsData] = useState(false);
@@ -18,7 +19,7 @@ const AnalyticsGraph = () => {
   const [deviceCatogary, setDeviceCatogary]: any = useState([]);
 
   // Bar chart for Total Users and Returning Users
-  const barChartOptions = {
+  const barChartOptions:{ options: ApexOptions; series: any[] } = {
     series: [
       {
         name: "Total Users",
@@ -91,7 +92,7 @@ const AnalyticsGraph = () => {
   };
 
   // Horizontal bar chart
-  const horizontalBarChartOptions = {
+  const horizontalBarChartOptions:{ options: ApexOptions; series: any[],labels:any } = {
     series: [
       {
         data: top5TemplateData.series || [],
@@ -182,7 +183,7 @@ const AnalyticsGraph = () => {
       })();
   }, []);
   // donut chart
-  const donutChartOptions = {
+  const donutChartOptions:{ options: ApexOptions; series: any[] } = {
     series: top5CoponentData.series || [],
     options: {
       chart: {
@@ -212,7 +213,7 @@ const AnalyticsGraph = () => {
   };
 
   // State for pie chart
-  const pieChartOptions = {
+  const pieChartOptions :{ options: ApexOptions; series: any[] }= {
     series: deviceCatogary.series || [],
     options: {
       chart: {
